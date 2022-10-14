@@ -2,13 +2,34 @@
 Made by `Ghost-Ducky#7698`
 
 #### Waypoint
-[Documentation]() / [Example]()
-
+[Documentation](https://github.com/GhostDuckyy/ESP-Library/tree/main/GhostyDuckyy#documentation)
 ## Loadstring
 ```lua
-
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/GhostDuckyy/ESP-Library/main/GhostyDuckyy/source.lua"))()
 ```
 
-## Documentation 
+## Documentation
+Documentation for Drawing-Library (ESP)
 
-## Example
+### RenderObject
+```lua
+RenderObject(type <string>, property <table>)
+```
+#### Label / Text
+**Example**
+
+```cs
+Library:RenderObject("Label", {
+  Visible = true, -- <Boolean>
+  Transparency = 1, -- <number>
+  Font = 0, -- <number>
+  Text = "Example", -- <string>
+  Size = 16, -- <number>
+  AutoScale = false, -- <string> | Auto scale size
+  Center = true, -- <boolean> | Set text center
+  Outline = true, -- <boolean>
+  OutlineColor = Color3.new(0,0,0), -- <Color3>
+  Color = Color3.new(1,1,1) -- <Color3>
+})
+```
+Note: How to change [**Font**](https://docs.synapse.to/docs/reference/drawing_lib.html#fonts)
