@@ -49,16 +49,16 @@ local Label = Library:RenderObject("Label", {
 #### Function
 
 ```lua
-  Label:DestoryRender() -- Stop render
-  Label:SetOptions("Visible", false) -- <string>, <value>
-  Label:AddFilter({
+  Label.DestoryRender() -- Stop render
+  Label.SetOptions("Visible", false) -- <string>, <value>
+  Label.AddFilter({
     ClassName = "Part", -- <string>
     Name = "Grass", -- <string>
   })
-  Label:RemoveFilter({
+  Label.RemoveFilter({
     ClassName = "Part", -- <string>
     Name = "Grass", -- <string>
   })
-  Label:ClearFilter() -- Clear fitler
+  Label.ClearFilter() -- Clear fitler
 ```
 Note: How to change [**Font**](https://docs.synapse.to/docs/reference/drawing_lib.html#fonts)
