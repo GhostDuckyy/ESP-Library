@@ -15,7 +15,7 @@ Documentation for Drawing-Library (ESP)
 ```lua
 RenderObject(type <string>, property <table>)
 ```
-#### Label / Text
+### Label / Text
 **Example**
 
 ```lua
