@@ -28,7 +28,7 @@ local Label = Library:RenderObject("Label", {
   }
   --// Setting of label / text
   Options = {
-      Visible = true, -- <Boolean>
+      Visible = true, -- <boolean>
       Transparency = 1, -- <number>
       Font = 0, -- <number>
       Text = "Example", -- <string>
