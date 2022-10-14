@@ -18,7 +18,7 @@ RenderObject(type <string>, property <table>)
 #### Label / Text
 **Example**
 
-```cs
+```lua
 local Label = Library:RenderObject("Label", {
   Name = "insert_name_here", -- <string>
   ClassName = "insert_classname_here", -- <string>
