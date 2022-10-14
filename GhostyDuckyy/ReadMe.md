@@ -25,7 +25,7 @@ local Label = Library:RenderObject("Label", {
   --// Fitler
   Fitler = {
     {ClassName = "insert_classname_here", Name = "insert_name_here"} -- <string>, <string>
-  }
+  },
   --// Setting of label / text
   Options = {
       Visible = true, -- <boolean>
