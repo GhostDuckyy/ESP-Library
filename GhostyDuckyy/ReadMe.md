@@ -9,6 +9,12 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Ghost
 ## Documentation
 Documentation for Drawing-Library (ESP)
 
+#### Default setting
+```lua
+Library.AutoRemove = true -- <boolean> | Remove render when object destroying
+Library.CheckIfOnScreen = true -- <boolaen> | Check if object in your screen
+```
+
 ### RenderObject
 ```lua
 RenderObject(type <string>, property <table>)
