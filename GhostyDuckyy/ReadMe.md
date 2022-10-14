@@ -1,8 +1,6 @@
 # Credit
 Made by `Ghost-Ducky#7698`
 
-#### Waypoint
-[Documentation](https://github.com/GhostDuckyy/ESP-Library/tree/main/GhostyDuckyy#documentation)
 ## Loadstring
 ```lua
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/GhostDuckyy/ESP-Library/main/GhostyDuckyy/source.lua"))()
