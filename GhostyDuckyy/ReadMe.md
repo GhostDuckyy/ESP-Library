@@ -20,16 +20,25 @@ RenderObject(type <string>, property <table>)
 
 ```cs
 Library:RenderObject("Label", {
-  Visible = true, -- <Boolean>
-  Transparency = 1, -- <number>
-  Font = 0, -- <number>
-  Text = "Example", -- <string>
-  Size = 16, -- <number>
-  AutoScale = false, -- <string> | Auto scale size
-  Center = true, -- <boolean> | Set text center
-  Outline = true, -- <boolean>
-  OutlineColor = Color3.new(0,0,0), -- <Color3>
-  Color = Color3.new(1,1,1) -- <Color3>
+  Name = "insert_name_here", -- <string>
+  ClassName = "insert_classname_here", -- <string>
+  --// Fitler
+  Fitler = {
+    {ClassName = "insert_classname_here", Name = "insert_name_here"} -- {<string>, <string>} <table>
+  }
+  --// Setting of label / text
+  Options = {
+      Visible = true, -- <Boolean>
+      Transparency = 1, -- <number>
+      Font = 0, -- <number>
+      Text = "Example", -- <string>
+      Size = 16, -- <number>
+      AutoScale = false, -- <string> | Auto scale size
+      Center = true, -- <boolean> | Set text center
+      Outline = true, -- <boolean>
+      OutlineColor = Color3.new(0,0,0), -- <Color3>
+      Color = Color3.new(1,1,1), -- <Color3>
+    },
 })
 ```
 Note: How to change [**Font**](https://docs.synapse.to/docs/reference/drawing_lib.html#fonts)
