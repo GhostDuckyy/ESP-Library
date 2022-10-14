@@ -19,12 +19,12 @@ RenderObject(type <string>, property <table>)
 **Example**
 
 ```cs
-Library:RenderObject("Label", {
+local Label = Library:RenderObject("Label", {
   Name = "insert_name_here", -- <string>
   ClassName = "insert_classname_here", -- <string>
   --// Fitler
   Fitler = {
-    {ClassName = "insert_classname_here", Name = "insert_name_here"} -- {<string>, <string>} <table>
+    {ClassName = "insert_classname_here", Name = "insert_name_here"} -- <string>, <string>
   }
   --// Setting of label / text
   Options = {
@@ -40,5 +40,21 @@ Library:RenderObject("Label", {
       Color = Color3.new(1,1,1), -- <Color3>
     },
 })
+```
+
+**Function**
+
+```lua
+  Label:DestoryRender() -- Stop render
+  Label:SetOptions("Visible", false) -- <string>, <value>
+  Label:AddFilter({
+    ClassName = "Part", -- <string>
+    Name = "Grass", -- <string>
+  })
+  Label:RemoveFilter({
+    ClassName = "Part", -- <string>
+    Name = "Grass", -- <string>
+  })
+  Label:ClearFilter() -- Clear fitler
 ```
 Note: How to change [**Font**](https://docs.synapse.to/docs/reference/drawing_lib.html#fonts)
