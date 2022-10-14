@@ -15,8 +15,8 @@ Documentation for Drawing-Library (ESP)
 ```lua
 RenderObject(type <string>, property <table>)
 ```
-### Label / Text
-**Example**
+### Label (Text)
+#### Example
 
 ```lua
 local Label = Library:RenderObject("Label", {
@@ -42,7 +42,7 @@ local Label = Library:RenderObject("Label", {
 })
 ```
 
-**Function**
+#### Function
 
 ```lua
   Label:DestoryRender() -- Stop render
