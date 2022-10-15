@@ -257,7 +257,7 @@ function Render:RenderObject(t, p)
     elseif Drawing_type == "line" or Drawing_type == "lines" or Drawing_type == "trace" or Drawing_type == "tracer" or Drawing_type == "tracers" then
         local ObjectName = property.Name
         local ClassName = property.ClassName
-        local LineForm = tostring(property.Form) or tostring(property.LineForm) or "mouse"
+        local LineForm = tostring(property.Form) or tostring(property.LineForm) or "center"
         local FilterObject = property.Filter or property.FilterObject or false
 
         local Options = property.Options or {
@@ -329,10 +329,8 @@ function Render:RenderObject(t, p)
                         if Screen then
                             v.Line.To = Vector2.new(Vector.X, Vector.Y)
 
-                            if LineForm:lower() == "mouse" then
-                                v.Line.Form = Vector2.new(Mouse.X, Mouse.Y)
-                            elseif LineForm:lower() == "top" then
-                                
+                            if LineForm:lower() == "top" then
+                            
                             elseif LineForm:lower() == "center" then
                                 
                             elseif LineForm:lower() == "bottom" then
@@ -348,9 +346,7 @@ function Render:RenderObject(t, p)
                     else
                         v.Line.To = Vector2.new(Vector.X, Vector.Y)
 
-                        if LineForm:lower() == "mouse" then
-                            v.Line.Form = Vector2.new(Mouse.X, Mouse.Y)
-                        elseif LineForm:lower() == "top" then
+                        if LineForm:lower() == "top" then
                             
                         elseif LineForm:lower() == "center" then
                             
@@ -366,10 +362,23 @@ function Render:RenderObject(t, p)
             end
         end)
 
+        local Move = Mouse.Move:Connect(function()
+            task.spawn(function()
+                if LineForm:lower() == "mouse" then
+                    for i,v in next, Folder do
+                        v.Line.Form = Vector2.new(Mouse.X, Mouse.Y)
+                    end
+                else
+                    return
+                end
+            end)
+        end)
+
         local func = {
             DestoryRender = function()
                 DescendantAdded:Disconnect()
                 RenderStepped:Disconnect()
+                Move:Disconnect()
 
                 for i,v in next, Folder do
                     v.Line.Visible = false
