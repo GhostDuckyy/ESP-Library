@@ -257,7 +257,7 @@ function Render:RenderObject(t, p)
     elseif Drawing_type == "line" or Drawing_type == "lines" or Drawing_type == "trace" or Drawing_type == "tracer" or Drawing_type == "tracers" then
         local ObjectName = property.Name
         local ClassName = property.ClassName
-        local LineForm = tostring(property.Form) or tostring(property.LineForm) or "center"
+        local From = tostring(property.From) or "center"
         local FilterObject = property.Filter or property.FilterObject or false
 
         local Options = property.Options or {
@@ -329,11 +329,11 @@ function Render:RenderObject(t, p)
                         if Screen then
                             v.Line.To = Vector2.new(Vector.X, Vector.Y)
 
-                            if LineForm:lower() == "top" then
+                            if From:lower() == "top" then
                             
-                            elseif LineForm:lower() == "center" then
+                            elseif From:lower() == "center" then
                                 
-                            elseif LineForm:lower() == "bottom" then
+                            elseif From:lower() == "bottom" then
                                 
                             end
 
@@ -346,11 +346,11 @@ function Render:RenderObject(t, p)
                     else
                         v.Line.To = Vector2.new(Vector.X, Vector.Y)
 
-                        if LineForm:lower() == "top" then
+                        if From:lower() == "top" then
                             
-                        elseif LineForm:lower() == "center" then
+                        elseif From:lower() == "center" then
                             
-                        elseif LineForm:lower() == "bottom" then
+                        elseif From:lower() == "bottom" then
                             
                         end
 
@@ -364,9 +364,9 @@ function Render:RenderObject(t, p)
 
         local Move = Mouse.Move:Connect(function()
             task.spawn(function()
-                if LineForm:lower() == "mouse" then
+                if From:lower() == "mouse" then
                     for i,v in next, Folder do
-                        v.Line.Form = Vector2.new(Mouse.X, Mouse.Y)
+                        v.Line.From = Vector2.new(Mouse.X, Mouse.Y)
                     end
                 else
                     return
