@@ -277,6 +277,10 @@ function Render:RenderObject(t, p)
                                 if tostring(v.ClassName):lower() == tostring(Table.ClassName):lower() and tostring(v.Name):lower() == tostring(Table.Name):lower() then
                                     local UwU = {Line = Drawing.new("Line"), Object = instance}
                                     table.insert(Folder, UwU)
+
+                                    if From:lower() == "mouse" then
+                                        UwU.Line.From = Vector2.new(Mouse.X, Mouse.Y)
+                                    end
                                 end
                             end
                         elseif Table.ClassName then
@@ -284,6 +288,10 @@ function Render:RenderObject(t, p)
                                 if tostring(v.ClassName):lower() == tostring(Table.ClassName):lower() then
                                     local UwU = {Line = Drawing.new("Line"), Object = instance}
                                     table.insert(Folder, UwU)
+
+                                    if From:lower() == "mouse" then
+                                        UwU.Line.From = Vector2.new(Mouse.X, Mouse.Y)
+                                    end
                                 end
                             end
                         elseif Table.Name then
@@ -291,16 +299,28 @@ function Render:RenderObject(t, p)
                                 if tostring(v.Name):lower() == tostring(Table.Name):lower() then
                                     local UwU = {Line = Drawing.new("Line"), Object = instance}
                                     table.insert(Folder, UwU)
+
+                                    if From:lower() == "mouse" then
+                                        UwU.Line.From = Vector2.new(Mouse.X, Mouse.Y)
+                                    end
                                 end
                             end
                         else
                             local UwU = {Line = Drawing.new("Line"), Object = instance}
                             table.insert(Folder, UwU)
+
+                            if From:lower() == "mouse" then
+                                UwU.Line.From = Vector2.new(Mouse.X, Mouse.Y)
+                            end
                         end
                     end
                 else
                     local UwU = {Line = Drawing.new("Line"), Object = instance}
                     table.insert(Folder, UwU)
+
+                    if From:lower() == "mouse" then
+                        UwU.Line.From = Vector2.new(Mouse.X, Mouse.Y)
+                    end
                 end
             end
         end
