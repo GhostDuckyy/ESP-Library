@@ -182,6 +182,19 @@ function Render:RenderObject(t, p)
                             table.insert(FilterObject, {arg})
                         end
                     end
+
+                    for i,v in next, Folder do
+                        v.Label:Remove()
+                        v.Object = nil
+                    end
+
+                    task.wait(.1)
+
+                    table.clear(Folder)
+
+                    for i,v in ipairs(workspace:GetDescendants()) do
+                        AddLabel(v)
+                    end
                 else
                     if typeof(arg) == "table" then
                         if arg.Name and arg.ClassName then
@@ -199,6 +212,19 @@ function Render:RenderObject(t, p)
                         elseif arg.Name then
                             table.insert(FilterObject, {arg})
                         end
+                    end
+
+                    for i,v in next, Folder do
+                        v.Label:Remove()
+                        v.Object = nil
+                    end
+
+                    task.wait(.1)
+
+                    table.clear(Folder)
+
+                    for i,v in ipairs(workspace:GetDescendants()) do
+                        AddLabel(v)
                     end
                 end
             end,
@@ -223,13 +249,12 @@ function Render:RenderObject(t, p)
             end,
             ClearFilter = function()
                 table.clear(FilterObject)
-                FilterObject = {}
             end,
         }
 
         return func
 
-    elseif Drawing_type == "line" or Drawing_type:find("trace") then
+    elseif Drawing_type == "line" or Drawing_type == "lines" or Drawing_type == "trace" or Drawing_type == "tracer" or Drawing_type == "tracers" then
         local ObjectName = property.Name
         local ClassName = property.ClassName
         local LineForm = tostring(property.Form) or tostring(property.LineForm) or "mouse"
@@ -347,8 +372,8 @@ function Render:RenderObject(t, p)
                 RenderStepped:Disconnect()
 
                 for i,v in next, Folder do
-                    v.Label.Visible = false
-                    v.Label:Remove()
+                    v.Line.Visible = false
+                    v.Line:Remove()
                 end
 
                 task.wait(.5)
@@ -382,6 +407,19 @@ function Render:RenderObject(t, p)
                             table.insert(FilterObject, {arg})
                         end
                     end
+
+                    for i,v in next, Folder do
+                        v.Line:Remove()
+                        v.Object = nil
+                    end
+
+                    task.wait(.1)
+
+                    table.clear(Folder)
+
+                    for i,v in ipairs(workspace:GetDescendants()) do
+                        AddLabel(v)
+                    end
                 else
                     if typeof(arg) == "table" then
                         if arg.Name and arg.ClassName then
@@ -399,6 +437,19 @@ function Render:RenderObject(t, p)
                         elseif arg.Name then
                             table.insert(FilterObject, {arg})
                         end
+                    end
+
+                    for i,v in next, Folder do
+                        v.Line:Remove()
+                        v.Object = nil
+                    end
+
+                    task.wait(.1)
+
+                    table.clear(Folder)
+
+                    for i,v in ipairs(workspace:GetDescendants()) do
+                        AddLabel(v)
                     end
                 end
             end,
@@ -423,7 +474,6 @@ function Render:RenderObject(t, p)
             end,
             ClearFilter = function()
                 table.clear(FilterObject)
-                FilterObject = {}
             end,
         }
 
