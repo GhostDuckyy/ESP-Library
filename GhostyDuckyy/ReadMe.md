@@ -26,8 +26,8 @@ RenderObject(type <string>, property <table>)
 local Label = Library:RenderObject("Label", {
   Name = "insert_name_here", -- <string>
   ClassName = "insert_classname_here", -- <string>
-  --// Fitler
-  Fitler = {
+  --// Filter
+  Filter = {
     {ClassName = "insert_classname_here", Name = "insert_name_here"} -- <string>, <string>
   },
   --// Setting of label / text
