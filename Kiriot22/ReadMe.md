@@ -122,3 +122,97 @@ ESP.Tracers = true
 > GetPlrFromChar(char) - should return the player whose character is char
 
 > UpdateAllow(box) - return false if the box should be hidden, otherwise return true, usually used to hide players in lobby areas
+
+**Custom Objects**
+The ESP has a built-in support for easily implementing custom objects, such as chests or cars or whatever by using **`ESP:AddObjectListener(parent, options)`**
+It will connect ChildAdded/DescendantAdded (depending on options) to the parent, and match the added instances for specified options, and if a match is found, add them to the ESP.
+It also works retroactively, meaning it will add instances which were created before the script was ran.
+
+Example 1, Murder Mystery 2 dropped gun ESP:
+```lua
+ESP:AddObjectListener(workspace, {
+    Name = "GunDrop",
+    CustomName = "Gun",
+    Color = Color3.fromRGB(0,124,0),
+    IsEnabled = "DroppedGun"
+})
+--some toggle:
+ESP.DroppedGun = true
+```
+
+Example 2, R2DA Zombies ESP:
+```lua
+ESP:AddObjectListener(workspace.Characters.Zombies, {
+    Color =  Color3.new(1,1,0),
+    Type = "Model",
+    PrimaryPart = function(obj)
+        local hrp = obj:FindFirstChildWhichIsA("BasePart")
+        while not hrp do
+            wait()
+            hrp = obj:FindFirstChildWhichIsA("BasePart")
+        end
+        return hrp
+    end,
+    Validator = function(obj)
+        return not game.Players:GetPlayerFromCharacter(obj)
+    end,
+    CustomName = function(obj)
+        return obj:FindFirstChild("Zombie") and obj.Zombie.Value or obj.Name
+    end,
+    IsEnabled = "NPCs",
+})
+--some toggle:
+ESP.NPCs = true
+```
+
+Full list of options and their explanation below:
+
+> Recursive - true/false, whether to use DescendantAdded instead of ChildAdded or not
+
+> Type - the expected ClassName/base class of the object, ex. Model, Part, BasePart, etc.
+
+> Name - the expected Name of the object
+
+> Validator(obj) - function, should return true if the object should be added to the ESP
+
+> PrimaryPart - the name of the part under the object that the ESP should treat as the primary part, can also be a function which should return the part
+
+> Color - either a Color3 or a function which returns a Color3 (will only be called once)
+
+> ColorDynamic - explained earlier
+
+> Name - a string or a function which returns one
+
+> IsEnabled - explained earlier
+
+> RenderInNil - explained earlier
+
+> OnAdded(box) - function, will get called after an object has been added to the ESP by the listener
+
+**Integrating custom drawing objects with the ESP**
+
+If you have something like a FOV circle which uses the drawing api and you don't want to make a separate RenderStepped loop just to update it, you can integrate it with the ESP's update loop. It will get updated **even if the ESP is toggled off**. All you have to do is make a table with an Update function, and then insert it into ESP.Objects table
+
+FOV circle example:
+```lua
+local mouse = game.Players.LocalPlayer:GetMouse()
+
+local FOVCircle = Drawing.new("Circle")
+FOVCircle.Radius = 50
+FOVCircle.Color = Color3.fromRGB(255, 170, 0)
+FOVCircle.Thickness = 3
+FOVCircle.Filled = false
+
+local CircleTbl = {
+    Update = function()
+        FOVCircle.Position = Vector2.new(mouse.X, mouse.Y+36)
+    end
+}
+table.insert(ESP.Objects, CircleTbl)
+```
+
+The reason it's going to update it even if ESP is toggled off is because in the RenderStepped loop it uses "pairs" when ESP is enabled, and "ipairs" when it's disabled. In other words, it only loops through the numerical indexes when ESP is disabled, and regular objects use dictionary keys, so it will only iterate values inserted with table.insert or such raysCool
+
+
+You're free to use/modify it however you want, just don't claim it as your own. Credits would be cool but you don't have to.
+Enjoy!
