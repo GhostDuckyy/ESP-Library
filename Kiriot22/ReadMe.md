@@ -1,7 +1,7 @@
 # ReadMe
 Made by [Real Panda](https://v3rmillion.net/member.php?action=profile&uid=46812)
 
-## Docs
+## Documentation
 #### Loadstring
 ```lua
 local ESP = loadstring(game:HttpGet("https://raw.githubusercontent.com/GhostDuckyy/ESP-Library/main/Kiriot22/source.lua"))()
