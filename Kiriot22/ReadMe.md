@@ -53,8 +53,6 @@ ESP.AutoRemove = <Boolean> - whether the boxes should be removed when the object
 
 The ESP supports overriding certain functions, specifically for games with custom teams/characters system. Overriding them works by doing `ESP.Overrides.FunctionName = customFunc`
 For example Bad Business has custom characters which don't use players.Character, so normally the ESP wouldn't work, however you can easily fix it by doing something like this:
-
-**Example**
 ```lua
 local ESP = loadstring(game:HttpGet("https://kiriot22.com/releases/ESP.lua"))()
 
@@ -113,3 +111,14 @@ ESP:Toggle(true)
 ESP.TeamColor = true
 ESP.Tracers = true
 ```
+
+**Full list of overrides and their explanation below:**
+> GetTeam(player) - should return the team object the player is on (can return a table or some other identifier, since it's only used for determining team mates)
+
+> IsTeamMate(player) - should return true if "player" is a team mate of the local player
+
+> GetColor(object) - only used for objects which don't have Color or ColorDynamic specified, should return a Color3 (or nil, in which case it uses ESP.Color)
+
+> GetPlrFromChar(char) - should return the player whose character is char
+
+> UpdateAllow(box) - return false if the box should be hidden, otherwise return true, usually used to hide players in lobby areas
