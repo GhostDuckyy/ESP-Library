@@ -55,7 +55,7 @@ Tracers : {
 ```
 ## Functions
 #### AddListener
-**Creates** a **new instance listener** on the Model, because this is so overcomplicated.
+**Creates** a **new instance listener** on the Model, because this is so **overcomplicated**.
 ```lua
 function ESP:AddListener(Model : Instance, Validator : function?, Settings : table?)
 
