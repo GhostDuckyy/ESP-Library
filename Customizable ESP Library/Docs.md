@@ -1,4 +1,6 @@
 # Documentation
+### Waypoints
+[**Loadstring**](https://github.com/GhostDuckyy/ESP-Library/blob/main/Customizable%20ESP%20Library/Docs.md#loadstring), [**Settings**](https://github.com/GhostDuckyy/ESP-Library/blob/main/Customizable%20ESP%20Library/Docs.md#settings), [**Functions**](https://github.com/GhostDuckyy/ESP-Library/blob/main/Customizable%20ESP%20Library/Docs.md#functions), [**Object**](https://github.com/GhostDuckyy/ESP-Library/blob/main/Customizable%20ESP%20Library/Docs.md#object), [**Example**](https://github.com/GhostDuckyy/ESP-Library/blob/main/Customizable%20ESP%20Library/Docs.md#example)
 ## Loadstring
 ```lua
 local ESP = loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-ESP-Library-9570", true))("there are cats in your walls let them out let them out let them out")
